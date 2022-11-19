@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minhas músicas</title>
+    <style>
+        body{
+            {{object.cor_fundo}}
+            color: {{object.cor_texto}};
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Minhas músicas</h1>
+        <h2>{{ object.nome }}</h2><br>
+        <p>{{ object.data_lancamento}}</p>
+        <img src="{{object.foto.url}}" width="340">
+        <h3>Músicas</h3>
+        {% for musica in object.musica_set.all %}
+            <h4>{{ musica.nome }}</h4>
+            <audio controls="controls">
+                <source src="{{musica.audio.url}}" type="audio/mp3" />
+            </audio>
+            <h2>letra</h2>
+            <code>{{ musica.letra }}</code>
+        {% endfor %}
+        <hr>
+        <p><a href="{% url 'sobre' %}">Sobre</a></p>
+    </center>
+</body>
+</html>

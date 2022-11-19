@@ -10,8 +10,14 @@
     <center>
         <h1>Minhas músicas</h1>
         <h2>Bernardo O.S</h2><br>
-        <p><a href="">Bandas</a></p>
-        <p><a href="">Músicas</a></p>
+        <h3>Álbuns</h3>
+        {% for album in albuns %}
+            <p>
+                <a href="{% url 'album_detail' album.id %}">
+                    <img src="{{album.foto.url}}" width="280"> <br> <h4>{{album.nome}}</h4>
+                </a>
+            </p>
+        {% endfor %}
         <hr>
         <p><a href="{% url 'sobre' %}">Sobre</a></p>
     </center>
